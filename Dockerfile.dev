@@ -1,0 +1,19 @@
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY --chown=node:node package.json .
+RUN npm install
+
+####RUN npm install react-router-dom --save
+
+COPY --chown=node:node . .
+
+RUN chown node:node /app/node_modules
+
+#USER node
+
+###RUN chmod -R 0777 /app/node_modules
+
+CMD ["npm", "run", "start"]
